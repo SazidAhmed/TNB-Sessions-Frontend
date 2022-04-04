@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 function Header() {
   return (
     <>
-      <div className="navbar bg-base-100">
+      <div className="navbar navbar bg-neutral text-neutral-content">
         <div className="flex-1">
           <Link to="/" className="btn btn-ghost normal-case text-xl">TNB-Sessions</Link>
         </div>
