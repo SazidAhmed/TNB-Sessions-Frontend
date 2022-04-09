@@ -4,7 +4,14 @@ const API_URL = '/api/users/'
 
 // Register user
 const register = async (userData) => {
-  const response = await axios.post('/api/register', userData)
+  const config = {
+    headers: {
+      "Content-type": "application/json",
+      "Accept": "application/json",
+      "X-XSRF-TOKEN": "XSRF-TOKEN"
+    }
+  }
+  const response = await axios.post('/api/register', userData, config)
 
   if (response.data) {
     localStorage.setItem('user', JSON.stringify(response.data))

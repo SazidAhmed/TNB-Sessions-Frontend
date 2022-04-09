@@ -10,10 +10,10 @@ function Register() {
     name:'',
     email:'',
     password:'',
-    password2:''
+    password_confirmation:''
   })
 
-  const { name, email, password, password2 } = formData
+  const { name, email, password, password_confirmation } = formData
 
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -43,15 +43,17 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (password !== password2) {
+    if (password !== password_confirmation) {
       toast.error('Passwords do not match')
+      console.log('Passwords do not match')
     } else {
       const userData = {
         name,
         email,
         password,
+        password_confirmation
       }
-
+      console.log(userData)
       dispatch(register(userData))
     }
   }
@@ -88,7 +90,7 @@ function Register() {
               <label className="label">
                 <span className="label-text">Confirm Password</span>
               </label>
-              <input type="text" name='password2' value={password2} onChange={onChange} placeholder="confirm password" className="input input-bordered" />
+              <input type="text" name='password_confirmation' value={password_confirmation} onChange={onChange} placeholder="confirm password" className="input input-bordered" />
             </div>
             <div className="form-control mt-6">
               <button type='submit' className="btn btn-primary">Login</button>
